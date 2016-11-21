@@ -18,7 +18,7 @@ public class DateHelper {
     static final int SKIP = 45;
 
     DateHelper() {
-        dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm");
+        dateTimeFormatter = DateTimeFormatter.ofPattern("dd MMM yyy HH:mm");
     }
 
     /**
@@ -55,7 +55,6 @@ public class DateHelper {
          long time[] = getTime(startDate,finalDate);
          return period.getYears() + " years " + period.getMonths() + " months " + period.getDays() + " days " +
                  time[0] + " hours " + time[1] + " minutes " + time[2] + " seconds";
-
      }
 
     /**
