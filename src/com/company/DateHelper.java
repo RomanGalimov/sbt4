@@ -70,9 +70,9 @@ public class DateHelper {
                 date2.getMonthValue(), date2.getDayOfMonth(), date1.getHour(), date1.getMinute(), date1.getSecond());
         Duration duration = Duration.between(today, date2);
         long seconds = duration.getSeconds();
-        long hours = (seconds / 3600);
-        long minutes = ((seconds % 3600) / 60);
-        long sec = (seconds % 60);
+        long hours = seconds / 3600;
+        long minutes = (seconds % 3600) / 60;
+        long sec = seconds % 60;
         return new long[]{hours, minutes, sec};
     }
 }
