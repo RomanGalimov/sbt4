@@ -28,10 +28,7 @@ public class Viking implements Warrior, Cloneable {
 
     @Override
     public boolean isAlive() {
-        if (health > 0)
-            return true;
-        else
-            return false;
+        return health > 0;
     }
 
     @Override

@@ -9,12 +9,18 @@ import java.util.Random;
  * class squad of warriors
  */
 public class Squad implements Cloneable {
-    Warrior warriors [] = new Warrior [5];
+    Warrior warriors [];
     private String name;
+    public static  int l = 1;
 
-    Squad (String name, Warrior warriors [] ) {
+    Squad (int k, Warrior warriors []) {
+        this.warriors = new Warrior [k];
         this.warriors = warriors;
-        this.name = name;
+        this.name = "Squad " + l;
+        for (int i = 0; i < warriors.length; i++) {
+            warriors [i].setSquatName(name);
+        }
+        l++;
     }
 
     /**
@@ -36,7 +42,7 @@ public class Squad implements Cloneable {
         do {
             k = random.nextInt(warriors.length);
         }
-        while (warriors[k].isAlive() != true);
+        while (!warriors[k].isAlive());
         return warriors[k];
     }
 
@@ -45,17 +51,12 @@ public class Squad implements Cloneable {
      * @return boolean
      */
     public boolean hasAliveWarriors() {
-        boolean alive = false;
         for (int i = 0; i < warriors.length ; i++) {
-            if (warriors[i].isAlive() == true) {
-                alive = true;
-                break;
-            }
-            else {
-                alive = false;
+            if (warriors[i].isAlive()) {
+                return true;
             }
         }
-        return alive;
+        return false;
     }
 
     @Override
@@ -67,7 +68,7 @@ public class Squad implements Cloneable {
     public Squad clone() {
         try {
             Squad clone = (Squad) super.clone();
-            clone.warriors = new Warrior[5];
+            clone.warriors = new Warrior[warriors.length];
            for (int i = 0; i < clone.warriors.length; i++) {
                clone.warriors[i] = warriors[i].clone();
            }
